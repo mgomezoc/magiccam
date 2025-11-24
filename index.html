@@ -7,7 +7,18 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- SEO Meta Tags Mejorados -->
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EBVMNELMJV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EBVMNELMJV');
+    </script>
+
+    <!-- SEO Meta Tags -->
     <title>
       MagicCam by 13Bodas | Filtros AR para Bodas, XV Años y Eventos 2025
     </title>
@@ -38,7 +49,7 @@
       hreflang="x-default"
       href="https://magiccam.13bodas.com/" />
 
-    <!-- Open Graph Mejorado -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />
     <meta property="og:site_name" content="MagicCam by 13Bodas" />
@@ -51,14 +62,14 @@
     <meta property="og:url" content="https://magiccam.13bodas.com/" />
     <meta
       property="og:image"
-      content="https://magiccam.13bodas.com/img/og-magiccam.png" />
+      content="https://magiccam.13bodas.com/img/og-magiccam.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
       content="MagicCam - Filtros AR para eventos" />
 
-    <!-- Twitter Card Mejorado -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -68,9 +79,9 @@
       content="Filtros AR personalizados para bodas, XV y eventos. Fotos y videos mágicos sin instalar apps." />
     <meta
       name="twitter:image"
-      content="https://magiccam.13bodas.com/img/og-magiccam.png" />
+      content="https://magiccam.13bodas.com/img/og-magiccam.jpg" />
 
-    <!-- Favicons Mejorados -->
+    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
@@ -84,15 +95,20 @@
       content="#f9f5ff"
       media="(prefers-color-scheme: light)" />
 
-    <!-- Preconnect para optimización -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://cesargomez.8thwall.app" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 
-    <!-- Fuentes optimizadas -->
+    <!-- Fuentes Mejoradas: Space Grotesk (headings) + Inter (body) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet" />
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <!-- Estilos -->
     <link rel="stylesheet" href="css/style.css" />
@@ -100,7 +116,7 @@
     <!-- Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Structured Data Mejorado -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -108,7 +124,7 @@
         "name": "MagicCam by 13Bodas",
         "url": "https://magiccam.13bodas.com/",
         "logo": "https://magiccam.13bodas.com/icon.png",
-        "image": "https://magiccam.13bodas.com/img/og-magiccam.png",
+        "image": "https://magiccam.13bodas.com/img/og-magiccam.jpg",
         "description": "Servicio de filtros de realidad aumentada personalizados para bodas, XV años y eventos en México. Experiencias AR sin apps, directo desde el navegador.",
         "provider": {
           "@type": "Organization",
@@ -119,60 +135,13 @@
         "areaServed": {
           "@type": "Country",
           "name": "México"
-        },
-        "availableChannel": {
-          "@type": "ServiceChannel",
-          "serviceUrl": "https://magiccam.13bodas.com/",
-          "servicePhone": "+52-xxx-xxx-xxxx",
-          "availableLanguage": {
-            "@type": "Language",
-            "name": "Español"
-          }
-        },
-        "offers": {
-          "@type": "Offer",
-          "description": "Filtros AR personalizados para eventos",
-          "priceCurrency": "MXN"
         }
-      }
-    </script>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "¿Qué es MagicCam?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "MagicCam es un servicio de filtros de realidad aumentada personalizados para bodas, XV años y eventos. Funciona directamente desde el navegador sin necesidad de descargar apps."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Necesito instalar una app para usar MagicCam?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, MagicCam funciona directamente desde el navegador de cualquier smartphone moderno. Los invitados solo escanean un código QR y comienzan a usar el filtro."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Para qué tipo de eventos sirve MagicCam?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "MagicCam es ideal para bodas, XV años, bautizos, aniversarios, eventos corporativos y cualquier celebración que quieras hacer inolvidable con filtros AR personalizados."
-            }
-          }
-        ]
       }
     </script>
   </head>
 
   <body>
-    <!-- Skip to main content para accesibilidad -->
+    <!-- Skip link -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <div class="page-wrapper">
@@ -212,38 +181,38 @@
         <!-- HERO -->
         <section id="inicio" class="hero" aria-labelledby="hero-title">
           <div class="hero-inner">
-            <div class="hero-copy">
-              <div class="eyebrow">
+            <div class="hero-copy gsap-fade-up">
+              <div class="eyebrow gsap-fade-in">
                 Realidad aumentada para momentos irrepetibles
               </div>
-              <h1 class="hero-title" id="hero-title">
+              <h1 class="hero-title gsap-fade-up-delay-1" id="hero-title">
                 Convierte tu <span class="highlight">boda, XV o evento</span> en
                 una experiencia mágica con filtros AR
               </h1>
-              <p class="hero-subtitle">
+              <p class="hero-subtitle gsap-fade-up-delay-2">
                 MagicCam by 13Bodas crea filtros de realidad aumentada
                 personalizados. Tus invitados solo escanean un QR, se toman la
                 foto con tu filtro y la comparten al instante en redes sociales.
               </p>
-              <div class="hero-cta-group">
+              <div class="hero-cta-group gsap-fade-up-delay-3">
                 <a href="#demo" class="btn-primary">Ver demo en acción</a>
-                <a href="#contacto" class="btn-ghost"
-                  >Solicitar cotización personalizada</a
-                >
+                <a href="#contacto" class="btn-ghost">Solicitar cotización</a>
               </div>
-              <div class="hero-meta" aria-label="Características principales">
+              <div
+                class="hero-meta gsap-fade-up-delay-4"
+                aria-label="Características principales">
                 <span
                   ><span class="hero-meta-dot" aria-hidden="true"></span> Sin
                   app, directo desde el navegador</span
                 >
                 <span
                   ><span class="hero-meta-dot" aria-hidden="true"></span> Ideal
-                  para bodas, XV y eventos corporativos</span
+                  para bodas, XV y eventos</span
                 >
               </div>
             </div>
 
-            <div class="hero-visual" aria-hidden="true">
+            <div class="hero-visual gsap-scale-in" aria-hidden="true">
               <div class="hero-card">
                 <div class="hero-screen">
                   <span class="hero-pill">Filtro Wonderland XV</span>
@@ -252,14 +221,9 @@
                 <div class="hero-card-footer">
                   <div>
                     <strong>Escanea. Sonríe. Comparte.</strong>
-                    <span
-                      >Todo listo con una sola URL personalizada para tu
-                      evento.</span
-                    >
+                    <span>Todo listo con una sola URL personalizada.</span>
                   </div>
-                  <div class="hero-badge">
-                    QR listo para invitaciones y back de fotos
-                  </div>
+                  <div class="hero-badge">QR listo para invitaciones</div>
                 </div>
                 <div class="hero-glow-orb"></div>
                 <div class="hero-glow-orb-2"></div>
@@ -271,7 +235,7 @@
         <!-- CÓMO FUNCIONA -->
         <section id="como-funciona" aria-labelledby="como-funciona-title">
           <div class="section-inner">
-            <header class="section-header">
+            <header class="section-header gsap-fade-up">
               <div class="section-kicker">Cómo funciona</div>
               <h2 class="section-title" id="como-funciona-title">
                 Una experiencia AR pensada para tus invitados
@@ -279,13 +243,12 @@
               <p class="section-description">
                 Diseñamos un filtro de realidad aumentada alineado al concepto
                 de tu evento. El día de la fiesta solo necesitan su celular y tu
-                QR de MagicCam. Nada de apps complicadas, descargas ni
-                configuraciones especiales.
+                QR de MagicCam.
               </p>
             </header>
 
             <div class="steps-grid" aria-label="Pasos para usar MagicCam">
-              <article class="step-card">
+              <article class="step-card gsap-card">
                 <div class="step-number" aria-hidden="true">1</div>
                 <h3 class="step-title">Escanean el QR</h3>
                 <p class="step-text">
@@ -295,7 +258,7 @@
                 </p>
               </article>
 
-              <article class="step-card">
+              <article class="step-card gsap-card">
                 <div class="step-number" aria-hidden="true">2</div>
                 <h3 class="step-title">Se activan los filtros MagicCam</h3>
                 <p class="step-text">
@@ -305,7 +268,7 @@
                 </p>
               </article>
 
-              <article class="step-card">
+              <article class="step-card gsap-card">
                 <div class="step-number" aria-hidden="true">3</div>
                 <h3 class="step-title">Capturan y comparten</h3>
                 <p class="step-text">
@@ -321,21 +284,19 @@
         <!-- TIPOS DE EVENTO -->
         <section id="eventos" aria-labelledby="eventos-title">
           <div class="section-inner">
-            <header class="section-header">
+            <header class="section-header gsap-fade-up">
               <div class="section-kicker">Eventos</div>
               <h2 class="section-title" id="eventos-title">
                 MagicCam para bodas, XV y cualquier tipo de evento
               </h2>
               <p class="section-description">
                 Creamos un filtro único para cada celebración. Desde una boda
-                elegante hasta una fiesta temática de Wonderland, MagicCam se
-                adapta al concepto, paleta de colores y estilo visual que tengas
-                en mente.
+                elegante hasta una fiesta temática de Wonderland.
               </p>
             </header>
 
             <div class="usecases-grid">
-              <article class="usecase-card">
+              <article class="usecase-card gsap-card">
                 <div class="usecase-glow" aria-hidden="true"></div>
                 <p class="usecase-pill">Bodas</p>
                 <h3 class="usecase-title">
@@ -343,14 +304,14 @@
                 </h3>
                 <p class="usecase-text">
                   Filtros románticos con iniciales, fecha del enlace y elementos
-                  visuales que combinan con tu decoración y fotografía.
+                  visuales que combinan con tu decoración.
                 </p>
                 <p class="usecase-tag">
                   Ideal para: recepción, photobooth, pista de baile.
                 </p>
               </article>
 
-              <article class="usecase-card">
+              <article class="usecase-card gsap-card">
                 <div class="usecase-glow" aria-hidden="true"></div>
                 <p class="usecase-pill">XV años</p>
                 <h3 class="usecase-title">
@@ -358,28 +319,27 @@
                 </h3>
                 <p class="usecase-text">
                   Filtros temáticos para la quinceañera y sus invitados:
-                  coronas, mundos de fantasía, paletas de color neón y textos
-                  personalizados.
+                  coronas, mundos de fantasía, paletas de color neón.
                 </p>
                 <p class="usecase-tag">
                   Perfecto para: entrada, vals, after party.
                 </p>
               </article>
 
-              <article class="usecase-card">
+              <article class="usecase-card gsap-card">
                 <div class="usecase-glow" aria-hidden="true"></div>
                 <p class="usecase-pill">Eventos sociales</p>
                 <h3 class="usecase-title">Bautizos, aniversarios y más</h3>
                 <p class="usecase-text">
                   Creamos filtros ligeros, elegantes o divertidos para cualquier
-                  celebración familiar o social que quieras hacer inolvidable.
+                  celebración familiar o social.
                 </p>
                 <p class="usecase-tag">
                   Experiencia personalizada por tipo de evento.
                 </p>
               </article>
 
-              <article class="usecase-card">
+              <article class="usecase-card gsap-card">
                 <div class="usecase-glow" aria-hidden="true"></div>
                 <p class="usecase-pill">Empresarial</p>
                 <h3 class="usecase-title">
@@ -400,22 +360,20 @@
         <!-- BENEFICIOS -->
         <section id="beneficios" aria-labelledby="beneficios-title">
           <div class="section-inner">
-            <header class="section-header">
+            <header class="section-header gsap-fade-up">
               <div class="section-kicker">Beneficios</div>
               <h2 class="section-title" id="beneficios-title">
                 Más que un filtro: una experiencia que se comparte sola
               </h2>
               <p class="section-description">
                 MagicCam está pensado para aumentar la interacción y generar
-                contenido orgánico alrededor de tu evento. Tus invitados se
-                divierten, tú obtienes recuerdos únicos y tu celebración se
-                multiplica en redes.
+                contenido orgánico alrededor de tu evento.
               </p>
             </header>
 
             <div class="benefits-grid">
               <ul class="benefits-list">
-                <li class="benefit-item">
+                <li class="benefit-item gsap-slide-right">
                   <div class="benefit-icon" aria-hidden="true">★</div>
                   <div class="benefit-body">
                     <strong
@@ -426,7 +384,7 @@
                   </div>
                 </li>
 
-                <li class="benefit-item">
+                <li class="benefit-item gsap-slide-right">
                   <div class="benefit-icon" aria-hidden="true">📱</div>
                   <div class="benefit-body">
                     <strong>Sin apps ni descargas</strong>
@@ -435,7 +393,7 @@
                   </div>
                 </li>
 
-                <li class="benefit-item">
+                <li class="benefit-item gsap-slide-right">
                   <div class="benefit-icon" aria-hidden="true">✨</div>
                   <div class="benefit-body">
                     <strong>Diseño a la medida de tu evento</strong>
@@ -444,7 +402,7 @@
                   </div>
                 </li>
 
-                <li class="benefit-item">
+                <li class="benefit-item gsap-slide-right">
                   <div class="benefit-icon" aria-hidden="true">💾</div>
                   <div class="benefit-body">
                     <strong>Recuerdos digitales listos para compartir</strong>
@@ -455,8 +413,8 @@
               </ul>
 
               <aside
-                class="benefits-panel"
-                aria-label="Resumen del servicio MagicCam">
+                class="benefits-panel gsap-scale-in"
+                aria-label="Resumen del servicio">
                 <h3>¿Qué incluye MagicCam?</h3>
                 <p>
                   Cada proyecto se cotiza de forma personalizada, pero en
@@ -466,14 +424,10 @@
                   <li>Filtro de realidad aumentada diseñado para tu evento.</li>
                   <li>URL única para compartir y generar el código QR.</li>
                   <li>Adaptación a diferentes modelos de teléfono.</li>
-                  <li>
-                    Pruebas previas y revisión visual contigo antes del evento.
-                  </li>
+                  <li>Pruebas previas y revisión visual contigo.</li>
                 </ul>
                 <p>
-                  Cuéntanos qué estás planeando y te proponemos el tipo de
-                  filtro, estilo visual y nivel de personalización ideal para tu
-                  fecha.
+                  Cuéntanos qué estás planeando y te proponemos el filtro ideal.
                 </p>
                 <a href="#contacto" class="btn-primary"
                   >Platicar sobre mi evento</a
@@ -483,30 +437,26 @@
           </div>
         </section>
 
-        <!-- DEMO MEJORADO -->
+        <!-- DEMO -->
         <section id="demo" class="demo-section" aria-labelledby="demo-title">
           <div class="section-inner">
-            <header class="section-header">
+            <header class="section-header gsap-fade-up">
               <div class="section-kicker">Demo en vivo</div>
               <h2 class="section-title" id="demo-title">
                 Prueba un filtro MagicCam desde tu celular
               </h2>
               <p class="section-description">
                 Escanea el código QR o abre el enlace en tu teléfono para
-                experimentar cómo se ve un filtro MagicCam en acción. Recuerda
-                que cada evento tiene su propio diseño, paleta y temática.
+                experimentar cómo se ve un filtro MagicCam en acción.
               </p>
             </header>
 
             <div class="demo-grid">
-              <div class="demo-phone-container">
+              <div class="demo-phone-container gsap-phone">
                 <div class="demo-phone">
                   <div class="demo-phone-frame">
                     <div class="demo-phone-notch" aria-hidden="true"></div>
-                    <div
-                      class="demo-phone-screen"
-                      aria-label="Vista previa del demo MagicCam">
-                      <!-- Demo interactivo con iframe de 8th Wall -->
+                    <div class="demo-phone-screen">
                       <iframe
                         src="https://cesargomez.8thwall.app/xv-renata/"
                         title="Demo MagicCam - Filtro AR Interactivo"
@@ -518,10 +468,7 @@
                   </div>
                   <div class="demo-qr-card">
                     <p class="demo-qr-label">Escanea en tu celular</p>
-                    <div
-                      class="demo-qr-placeholder"
-                      aria-label="Código QR para demo MagicCam">
-                      <!-- Aquí iría tu QR code real -->
+                    <div class="demo-qr-placeholder">
                       <svg viewBox="0 0 100 100" class="qr-icon">
                         <rect
                           x="10"
@@ -536,112 +483,16 @@
                           height="5"
                           fill="currentColor" />
                         <rect
-                          x="40"
-                          y="10"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="50"
-                          y="10"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
                           x="75"
                           y="10"
                           width="15"
                           height="15"
-                          fill="currentColor" />
-                        <rect
-                          x="10"
-                          y="30"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="20"
-                          y="30"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="40"
-                          y="30"
-                          width="20"
-                          height="20"
-                          fill="currentColor" />
-                        <rect
-                          x="75"
-                          y="30"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="85"
-                          y="30"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="10"
-                          y="40"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="20"
-                          y="40"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="75"
-                          y="40"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="85"
-                          y="40"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="10"
-                          y="50"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="20"
-                          y="50"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="75"
-                          y="50"
-                          width="5"
-                          height="5"
-                          fill="currentColor" />
-                        <rect
-                          x="85"
-                          y="50"
-                          width="5"
-                          height="5"
                           fill="currentColor" />
                         <rect
                           x="10"
                           y="75"
                           width="15"
                           height="15"
-                          fill="currentColor" />
-                        <rect
-                          x="40"
-                          y="70"
-                          width="20"
-                          height="20"
                           fill="currentColor" />
                         <rect
                           x="75"
@@ -660,37 +511,35 @@
               </div>
 
               <div class="demo-copy">
-                <div class="demo-feature-card">
-                  <div class="demo-feature-icon" aria-hidden="true">🎭</div>
+                <div class="demo-feature-card gsap-card">
+                  <div class="demo-feature-icon">🎭</div>
                   <div>
                     <h3>Experiencia inmersiva</h3>
                     <p>
-                      Imagina que tus invitados escanean el QR en la entrada de
-                      la fiesta y, en segundos, ya están usando tu filtro
-                      diseñado especialmente para ese día.
+                      Tus invitados escanean el QR y en segundos ya están usando
+                      tu filtro diseñado especialmente para ese día.
                     </p>
                   </div>
                 </div>
 
-                <div class="demo-feature-card">
-                  <div class="demo-feature-icon" aria-hidden="true">📱</div>
+                <div class="demo-feature-card gsap-card">
+                  <div class="demo-feature-icon">📱</div>
                   <div>
                     <h3>Compatible con todos los dispositivos</h3>
                     <p>
-                      Funciona en la mayoría de celulares modernos con cámara y
-                      navegador actualizado (iOS Safari, Android Chrome).
+                      Funciona en la mayoría de celulares modernos con cámara
+                      (iOS Safari, Android Chrome).
                     </p>
                   </div>
                 </div>
 
-                <div class="demo-feature-card">
-                  <div class="demo-feature-icon" aria-hidden="true">🎨</div>
+                <div class="demo-feature-card gsap-card">
+                  <div class="demo-feature-icon">🎨</div>
                   <div>
                     <h3>Integración total</h3>
                     <p>
-                      Se integra perfecto con la decoración (back de fotos,
-                      invitaciones, mesas, pantallas) y contenido para redes
-                      sociales.
+                      Se integra perfecto con la decoración y contenido para
+                      redes sociales.
                     </p>
                   </div>
                 </div>
@@ -699,20 +548,14 @@
                   href="https://cesargomez.8thwall.app/xv-renata/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="btn-ghost btn-demo-external">
+                  class="btn-ghost btn-demo-external gsap-fade-up">
                   <span>Abrir demo en pantalla completa</span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path
                       d="M6 3L11 8L6 13"
                       stroke="currentColor"
                       stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round" />
+                      stroke-linecap="round" />
                   </svg>
                 </a>
               </div>
@@ -723,7 +566,7 @@
         <!-- PROCESO -->
         <section aria-labelledby="proceso-title">
           <div class="section-inner">
-            <header class="section-header">
+            <header class="section-header gsap-fade-up">
               <div class="section-kicker">Proceso</div>
               <h2 class="section-title" id="proceso-title">
                 Así trabajamos tu experiencia MagicCam
@@ -731,47 +574,45 @@
             </header>
 
             <div class="process-timeline">
-              <div class="process-step">
-                <div class="process-badge" aria-hidden="true">1</div>
+              <div class="process-step gsap-timeline-item">
+                <div class="process-badge">1</div>
                 <div>
                   <strong>Nos cuentas sobre tu evento</strong>
                   <span
-                    >Fecha, tipo de evento, lugar, temática, paleta de colores y
-                    qué te gustaría lograr con MagicCam.</span
+                    >Fecha, tipo de evento, lugar, temática y paleta de
+                    colores.</span
                   >
                 </div>
               </div>
 
-              <div class="process-step">
-                <div class="process-badge" aria-hidden="true">2</div>
+              <div class="process-step gsap-timeline-item">
+                <div class="process-badge">2</div>
                 <div>
                   <strong>Propuesta creativa y alcance</strong>
                   <span
-                    >Te presentamos una idea de filtro alineada a tu concepto:
-                    elementos visuales, textos y posibles animaciones.</span
+                    >Te presentamos una idea de filtro alineada a tu
+                    concepto.</span
                   >
                 </div>
               </div>
 
-              <div class="process-step">
-                <div class="process-badge" aria-hidden="true">3</div>
+              <div class="process-step gsap-timeline-item">
+                <div class="process-badge">3</div>
                 <div>
                   <strong>Diseño, pruebas y ajustes</strong>
                   <span
                     >Preparamos una versión de prueba para que la veas en tu
-                    celular. Hacemos ajustes visuales hasta que quede como lo
-                    imaginaste.</span
+                    celular.</span
                   >
                 </div>
               </div>
 
-              <div class="process-step">
-                <div class="process-badge" aria-hidden="true">4</div>
+              <div class="process-step gsap-timeline-item">
+                <div class="process-badge">4</div>
                 <div>
                   <strong>Entrega de QR y enlace final</strong>
                   <span
-                    >Te compartimos la URL final y el código QR para que lo uses
-                    en invitaciones, impresos o pantallas el día del
+                    >Te compartimos la URL final y el código QR para tu
                     evento.</span
                   >
                 </div>
@@ -786,47 +627,37 @@
           class="contact-section"
           aria-labelledby="contacto-title">
           <div class="section-inner">
-            <header class="section-header">
+            <header class="section-header gsap-fade-up">
               <div class="section-kicker">Contacto</div>
               <h2 class="section-title" id="contacto-title">
                 Platiquemos sobre tu boda, XV o evento
               </h2>
               <p class="section-description">
                 Cada celebración es distinta, por eso ofrecemos cotizaciones
-                personalizadas. Compártenos los detalles de tu evento y te
-                responderemos con una propuesta a la medida de lo que estás
-                organizando.
+                personalizadas.
               </p>
             </header>
 
             <div class="contact-grid">
-              <div class="contact-text">
+              <div class="contact-text gsap-slide-right">
                 <p>
-                  Puedes usar el formulario para contarnos sobre tu fecha,
-                  ubicación, tipo de evento y cualquier idea que tengas para tu
-                  filtro MagicCam. También puedes incluir el link de tu
-                  invitación digital si ya cuentas con una.
+                  Usa el formulario para contarnos sobre tu fecha, ubicación y
+                  cualquier idea que tengas para tu filtro MagicCam.
                 </p>
                 <ul class="contact-highlights">
                   <li>Cotización personalizada sin compromiso.</li>
+                  <li>Ideal contratar con varias semanas de anticipación.</li>
                   <li>
-                    Ideal contratar con varias semanas de anticipación,
-                    especialmente en temporada alta.
-                  </li>
-                  <li>
-                    Servicio disponible para bodas, XV, eventos sociales y
-                    corporativos.
+                    Disponible para bodas, XV, eventos sociales y corporativos.
                   </li>
                 </ul>
               </div>
 
-              <div class="contact-card">
+              <div class="contact-card gsap-scale-in">
                 <h3>Solicitar información de MagicCam</h3>
-                <!-- Ajusta el action y method según tu backend o herramienta de formularios -->
                 <form
                   action="https://13bodas.com/contacto-magiccam"
-                  method="post"
-                  name="contacto-magiccam">
+                  method="post">
                   <div class="field-group">
                     <label for="nombre"
                       >Nombre completo <span class="required">*</span></label
@@ -864,7 +695,7 @@
                       name="telefono"
                       required
                       autocomplete="tel"
-                      placeholder="Incluye clave de país si es necesario" />
+                      placeholder="Incluye clave de país" />
                   </div>
 
                   <div class="field-group">
@@ -878,41 +709,28 @@
                       <option value="bautizo">Bautizo</option>
                       <option value="aniversario">Aniversario</option>
                       <option value="corporativo">Evento corporativo</option>
-                      <option value="otro">Otro tipo de evento</option>
+                      <option value="otro">Otro</option>
                     </select>
                   </div>
 
                   <div class="field-group">
-                    <label for="fecha">Fecha del evento (si la tienes)</label>
+                    <label for="fecha">Fecha del evento</label>
                     <input type="date" id="fecha" name="fecha" />
                   </div>
 
                   <div class="field-group">
-                    <label for="ciudad"
-                      >Ciudad / lugar aproximado del evento</label
-                    >
-                    <input
-                      type="text"
-                      id="ciudad"
-                      name="ciudad"
-                      placeholder="Ciudad y estado / provincia" />
-                  </div>
-
-                  <div class="field-group">
                     <label for="mensaje"
-                      >Cuéntanos qué te gustaría lograr con MagicCam</label
+                      >Cuéntanos qué te gustaría lograr</label
                     >
                     <textarea
                       id="mensaje"
                       name="mensaje"
                       rows="4"
-                      placeholder="Temática, colores, estilo de filtro, si ya tienes invitación digital, etc."></textarea>
+                      placeholder="Temática, colores, estilo de filtro..."></textarea>
                   </div>
 
                   <p class="form-footnote">
-                    <span class="required">*</span> Campos obligatorios. La
-                    información se utilizará únicamente para responder a tu
-                    solicitud de cotización.
+                    <span class="required">*</span> Campos obligatorios.
                   </p>
 
                   <button type="submit" class="btn-primary btn-submit">
@@ -932,10 +750,7 @@
             reservados.
           </div>
           <div class="footer-links">
-            <a
-              href="https://13bodas.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a href="https://13bodas.com" target="_blank" rel="noopener"
               >Volver a 13Bodas</a
             >
             <a href="#inicio">Ir al inicio</a>
