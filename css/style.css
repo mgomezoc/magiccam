@@ -338,7 +338,7 @@ header.scrolled {
   content: "";
   position: absolute;
   inset: -10%;
-  background-image: url("../img/hero-magiccam.png");
+  background-image: url("../img/hero-magiccam.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.35;
@@ -516,7 +516,7 @@ header.scrolled {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/demo-preview.png");
+  background-image: url("../img/demo-preview.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.75;
@@ -1466,4 +1466,50 @@ footer {
   h3 {
     page-break-after: avoid;
   }
+}
+
+/* ==========================================================================
+   GSAP Animation Classes - Asegurar visibilidad
+   ========================================================================== */
+
+/* Todos los elementos animados son visibles por defecto */
+.gsap-fade-up,
+.gsap-fade-up-delay-1,
+.gsap-fade-up-delay-2,
+.gsap-fade-up-delay-3,
+.gsap-fade-up-delay-4,
+.gsap-fade-in,
+.gsap-scale-in,
+.gsap-card,
+.gsap-slide-right,
+.gsap-phone,
+.gsap-timeline-item,
+.step-card,
+.usecase-card,
+.benefit-item,
+.demo-feature-card,
+.process-step,
+.section-header,
+.contact-text,
+.contact-card,
+.benefits-panel {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Fallback para navegadores sin JS */
+.no-js .gsap-fade-up,
+.no-js .gsap-fade-up-delay-1,
+.no-js .gsap-fade-up-delay-2,
+.no-js .gsap-fade-up-delay-3,
+.no-js .gsap-fade-up-delay-4,
+.no-js .gsap-fade-in,
+.no-js .gsap-scale-in,
+.no-js .gsap-card,
+.no-js .gsap-slide-right,
+.no-js .gsap-phone,
+.no-js .gsap-timeline-item {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }

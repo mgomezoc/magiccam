@@ -9,10 +9,24 @@ document.getElementById('year').textContent = new Date().getFullYear();
 gsap.registerPlugin(ScrollTrigger);
 
 // ==========================================
+// CONFIGURACIÓN GLOBAL DE GSAP
+// ==========================================
+
+gsap.config({
+  force3D: true,
+  nullTargetWarn: false,
+});
+
+// Configuración de ScrollTrigger por defecto
+ScrollTrigger.defaults({
+  toggleActions: 'play none none none', // Solo play, no reverse
+  markers: false, // Cambiar a true para debugging
+});
+
+// ==========================================
 // NAVEGACIÓN
 // ==========================================
 
-// Toggle del menú móvil
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
@@ -22,7 +36,6 @@ if (navToggle && navLinks) {
     navToggle.setAttribute('aria-expanded', isOpen);
   });
 
-  // Cerrar menú al hacer clic en un enlace
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
@@ -30,7 +43,6 @@ if (navToggle && navLinks) {
     });
   });
 
-  // Cerrar menú con tecla Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('open')) {
       navLinks.classList.remove('open');
@@ -39,7 +51,6 @@ if (navToggle && navLinks) {
     }
   });
 
-  // Cerrar menú al hacer clic fuera
   document.addEventListener('click', (e) => {
     if (
       navLinks.classList.contains('open') &&
@@ -58,41 +69,33 @@ const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
-
   if (currentScroll > 50) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
-
   lastScroll = currentScroll;
 });
 
-// Smooth scroll para enlaces internos
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
-
     if (href === '#' || href === '') {
       e.preventDefault();
       return;
     }
-
     const target = document.querySelector(href);
-
     if (target) {
       e.preventDefault();
-
       const headerHeight = document.querySelector('header').offsetHeight;
       const targetPosition =
         target.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = targetPosition - headerHeight - 20;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });
-
       target.setAttribute('tabindex', '-1');
       target.focus();
     }
@@ -100,327 +103,314 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 // ==========================================
-// GSAP ANIMATIONS CON SCROLLTRIGGER
+// FUNCIÓN HELPER MEJORADA
 // ==========================================
 
-// Configuración global de GSAP
-gsap.config({
-  force3D: true,
-});
+const animateElement = (element, animationProps, triggerProps = {}) => {
+  // Asegurarse de que el elemento sea visible desde el inicio
+  gsap.set(element, { opacity: 1, visibility: 'visible' });
 
-// Función helper para animaciones
-const createScrollTrigger = (element, animation) => {
-  return {
+  return gsap.from(element, {
+    ...animationProps,
     scrollTrigger: {
       trigger: element,
-      start: 'top 85%',
-      end: 'bottom 15%',
-      toggleActions: 'play none none reverse',
-      // markers: true, // Descomentar para debugging
+      start: 'top 90%',
+      end: 'bottom 10%',
+      toggleActions: 'play none none none',
+      once: true, // Solo animar una vez
+      ...triggerProps,
     },
-    ...animation,
-  };
+  });
 };
 
 // ==========================================
-// 1. HERO ANIMATIONS
+// DETECTAR SI ESTÁ EN VIEWPORT AL CARGAR
 // ==========================================
 
-// Fade up con retraso escalonado
-gsap.utils.toArray('.gsap-fade-up').forEach((element, index) => {
-  gsap.from(element, {
-    y: 60,
+const isInViewport = (element) => {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+
+// ==========================================
+// 1. HERO ANIMATIONS - SIN SCROLLTRIGGER
+// ==========================================
+
+// Hero siempre visible, animaciones al cargar la página
+
+// Fade up escalonado para hero copy
+const heroElements = [
+  { selector: '.gsap-fade-in', delay: 0 },
+  { selector: '.gsap-fade-up-delay-1', delay: 0.2 },
+  { selector: '.gsap-fade-up-delay-2', delay: 0.4 },
+  { selector: '.gsap-fade-up-delay-3', delay: 0.6 },
+  { selector: '.gsap-fade-up-delay-4', delay: 0.8 },
+];
+
+heroElements.forEach(({ selector, delay }) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    gsap.from(element, {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: delay,
+      ease: 'power3.out',
+      clearProps: 'all', // Limpiar propiedades después
+    });
+  }
+});
+
+// Hero visual con scale
+const heroVisual = document.querySelector('.gsap-scale-in');
+if (heroVisual) {
+  gsap.from(heroVisual, {
+    scale: 0.8,
     opacity: 0,
-    duration: 1,
-    delay: index * 0.15,
-    ease: 'power3.out',
+    duration: 1.2,
+    delay: 0.3,
+    ease: 'back.out(1.3)',
+    clearProps: 'all',
   });
-});
+}
 
-// Animaciones con delay específico
-gsap.from('.gsap-fade-up-delay-1', {
-  y: 50,
-  opacity: 0,
-  duration: 1,
-  delay: 0.2,
-  ease: 'power3.out',
-});
+// ==========================================
+// 2. SECTION HEADERS
+// ==========================================
 
-gsap.from('.gsap-fade-up-delay-2', {
-  y: 40,
-  opacity: 0,
-  duration: 1,
-  delay: 0.4,
-  ease: 'power3.out',
-});
-
-gsap.from('.gsap-fade-up-delay-3', {
-  y: 30,
-  opacity: 0,
-  duration: 1,
-  delay: 0.6,
-  ease: 'power3.out',
-});
-
-gsap.from('.gsap-fade-up-delay-4', {
-  y: 20,
-  opacity: 0,
-  duration: 1,
-  delay: 0.8,
-  ease: 'power3.out',
-});
-
-// Fade in simple
-gsap.from('.gsap-fade-in', {
-  opacity: 0,
-  duration: 1,
-  ease: 'power2.out',
-});
-
-// Scale in para elementos visuales
-gsap.from('.gsap-scale-in', {
-  scale: 0.8,
-  opacity: 0,
-  duration: 1.2,
-  delay: 0.3,
-  ease: 'back.out(1.3)',
+gsap.utils.toArray('.section-header').forEach((header) => {
+  // Solo animar si no está en viewport inicial
+  if (!isInViewport(header)) {
+    animateElement(header, {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    });
+  }
 });
 
 // ==========================================
-// 2. CARDS CON STAGGER (STEPS, USECASES, DEMO FEATURES)
+// 3. STEP CARDS
 // ==========================================
 
-// Animación para todas las cards con stagger
-gsap.utils.toArray('.gsap-card').forEach((card) => {
-  gsap.from(
-    card,
-    createScrollTrigger(card, {
+gsap.utils.toArray('.step-card').forEach((card, index) => {
+  if (!isInViewport(card)) {
+    animateElement(card, {
       y: 80,
       opacity: 0,
       duration: 0.8,
-      ease: 'power3.out',
-      stagger: 0.2,
-    })
-  );
-});
-
-// Animación específica para step cards con rotación sutil
-gsap.utils.toArray('.step-card').forEach((card, index) => {
-  gsap.from(
-    card,
-    createScrollTrigger(card, {
-      y: 100,
-      opacity: 0,
-      rotation: index % 2 === 0 ? -5 : 5,
-      duration: 1,
-      delay: index * 0.15,
-      ease: 'back.out(1.2)',
-    })
-  );
-});
-
-// Animación para usecase cards con efecto de revelación
-gsap.utils.toArray('.usecase-card').forEach((card, index) => {
-  gsap.from(
-    card,
-    createScrollTrigger(card, {
-      x: index % 2 === 0 ? -80 : 80,
-      opacity: 0,
-      duration: 1,
       delay: index * 0.1,
       ease: 'power3.out',
-    })
-  );
+    });
+  }
 });
 
 // ==========================================
-// 3. BENEFITS SECTION
+// 4. USECASE CARDS
 // ==========================================
 
-// Slide desde la derecha para benefit items
-gsap.utils.toArray('.gsap-slide-right').forEach((item, index) => {
-  gsap.from(
-    item,
-    createScrollTrigger(item, {
-      x: -60,
+gsap.utils.toArray('.usecase-card').forEach((card, index) => {
+  if (!isInViewport(card)) {
+    animateElement(card, {
+      y: 60,
       opacity: 0,
       duration: 0.8,
+      delay: index * 0.1,
+      ease: 'power3.out',
+    });
+  }
+});
+
+// ==========================================
+// 5. BENEFIT ITEMS
+// ==========================================
+
+gsap.utils.toArray('.benefit-item').forEach((item, index) => {
+  if (!isInViewport(item)) {
+    animateElement(item, {
+      x: -40,
+      opacity: 0,
+      duration: 0.7,
       delay: index * 0.1,
       ease: 'power2.out',
-    })
-  );
+    });
+  }
 });
 
-// Panel lateral con scale
-gsap.utils.toArray('.benefits-panel').forEach((panel) => {
-  gsap.from(
-    panel,
-    createScrollTrigger(panel, {
-      scale: 0.9,
-      opacity: 0,
-      duration: 1,
-      ease: 'back.out(1.2)',
-    })
-  );
-});
+// Benefits panel
+const benefitsPanel = document.querySelector('.benefits-panel');
+if (benefitsPanel && !isInViewport(benefitsPanel)) {
+  animateElement(benefitsPanel, {
+    scale: 0.95,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+}
 
 // ==========================================
-// 4. DEMO SECTION
+// 6. DEMO SECTION
 // ==========================================
 
-// Animación del teléfono con efecto 3D
-gsap.utils.toArray('.gsap-phone').forEach((phone) => {
-  gsap.from(
-    phone,
-    createScrollTrigger(phone, {
-      y: 100,
-      rotationY: 15,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power3.out',
-    })
-  );
-});
+const demoPhone = document.querySelector('.demo-phone-container');
+if (demoPhone && !isInViewport(demoPhone)) {
+  animateElement(demoPhone, {
+    y: 80,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+  });
+}
 
-// Feature cards del demo con stagger
+// Demo feature cards
 gsap.utils.toArray('.demo-feature-card').forEach((card, index) => {
-  gsap.from(
-    card,
-    createScrollTrigger(card, {
-      x: 60,
+  if (!isInViewport(card)) {
+    animateElement(card, {
+      x: 50,
+      opacity: 0,
+      duration: 0.7,
+      delay: index * 0.15,
+      ease: 'power2.out',
+    });
+  }
+});
+
+// ==========================================
+// 7. PROCESS TIMELINE
+// ==========================================
+
+gsap.utils.toArray('.process-step').forEach((step, index) => {
+  if (!isInViewport(step)) {
+    const badge = step.querySelector('.process-badge');
+    const content = step.querySelector('div:last-child');
+
+    if (badge && content) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: step,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true,
+        },
+      });
+
+      // Asegurar visibilidad
+      gsap.set([badge, content, step], { opacity: 1, visibility: 'visible' });
+
+      tl.from(badge, {
+        scale: 0,
+        rotation: -180,
+        duration: 0.5,
+        ease: 'back.out(2)',
+      }).from(
+        content,
+        {
+          x: -30,
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+        },
+        '-=0.3'
+      );
+    }
+  }
+});
+
+// ==========================================
+// 8. CONTACT SECTION
+// ==========================================
+
+const contactText = document.querySelector('.contact-text');
+if (contactText && !isInViewport(contactText)) {
+  animateElement(contactText, {
+    x: -60,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+}
+
+const contactCard = document.querySelector('.contact-card');
+if (contactCard && !isInViewport(contactCard)) {
+  animateElement(contactCard, {
+    scale: 0.95,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+}
+
+// ==========================================
+// 9. ANIMACIONES GENERALES CON CLASE gsap-card
+// ==========================================
+
+gsap.utils.toArray('.gsap-card').forEach((card, index) => {
+  if (!isInViewport(card)) {
+    animateElement(card, {
+      y: 60,
       opacity: 0,
       duration: 0.8,
-      delay: index * 0.15,
       ease: 'power3.out',
-    })
-  );
+    });
+  }
 });
 
 // ==========================================
-// 5. TIMELINE DEL PROCESO
+// 10. PARALLAX EFFECTS (OPCIONAL - MÁS SUTIL)
 // ==========================================
 
-// Animación secuencial para los pasos del proceso
-gsap.utils.toArray('.gsap-timeline-item').forEach((item, index) => {
-  const badge = item.querySelector('.process-badge');
-  const content = item.querySelector('div:last-child');
-
-  // Timeline para coordinar múltiples animaciones
-  const tl = gsap.timeline(createScrollTrigger(item, {}));
-
-  tl.from(badge, {
-    scale: 0,
-    rotation: -180,
-    duration: 0.6,
-    ease: 'back.out(2)',
-  })
-    .from(
-      content,
-      {
-        x: -40,
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power2.out',
+// Solo en desktop
+if (window.innerWidth > 768) {
+  // Hero glows con parallax muy sutil
+  const heroGlow1 = document.querySelector('.hero-glow-orb');
+  if (heroGlow1) {
+    gsap.to(heroGlow1, {
+      y: -20,
+      x: 10,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 2, // Más suave
       },
-      '-=0.3'
-    )
-    .from(
-      item,
-      {
-        borderLeftColor: 'rgba(255, 255, 255, 0)',
-        duration: 0.4,
+    });
+  }
+
+  const heroGlow2 = document.querySelector('.hero-glow-orb-2');
+  if (heroGlow2) {
+    gsap.to(heroGlow2, {
+      y: 20,
+      x: -10,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 2,
       },
-      '-=0.4'
-    );
-});
+    });
+  }
 
-// ==========================================
-// 6. CONTACT SECTION
-// ==========================================
-
-// Slide desde la derecha para texto de contacto
-gsap.utils.toArray('.contact-text').forEach((text) => {
-  gsap.from(
-    text,
-    createScrollTrigger(text, {
-      x: -80,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-    })
-  );
-});
-
-// Scale in para el formulario
-gsap.utils.toArray('.contact-card').forEach((card) => {
-  gsap.from(
-    card,
-    createScrollTrigger(card, {
-      scale: 0.9,
-      opacity: 0,
-      duration: 1,
-      ease: 'back.out(1.2)',
-    })
-  );
-});
-
-// ==========================================
-// 7. ANIMACIONES DE PARALLAX (OPCIONAL)
-// ==========================================
-
-// Parallax para glows del hero
-gsap.to('.hero-glow-orb', {
-  y: -30,
-  x: 20,
-  scrollTrigger: {
-    trigger: '.hero',
-    start: 'top top',
-    end: 'bottom top',
-    scrub: 1,
-  },
-});
-
-gsap.to('.hero-glow-orb-2', {
-  y: 30,
-  x: -20,
-  scrollTrigger: {
-    trigger: '.hero',
-    start: 'top top',
-    end: 'bottom top',
-    scrub: 1,
-  },
-});
-
-// Parallax para el teléfono del demo
-gsap.to('.demo-phone', {
-  y: -40,
-  scrollTrigger: {
-    trigger: '.demo-section',
-    start: 'top bottom',
-    end: 'bottom top',
-    scrub: 1,
-  },
-});
-
-// ==========================================
-// 8. REVEAL DE TEXTO CON SPLIT (OPCIONAL AVANZADO)
-// ==========================================
-
-// Esta sección es opcional - descomenta si quieres efecto de revelación letra por letra
-/*
-gsap.utils.toArray('.section-title').forEach((title) => {
-  const chars = title.textContent.split('');
-  title.innerHTML = chars.map(char => `<span style="display: inline-block;">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-
-  gsap.from(title.children, createScrollTrigger(title, {
-    opacity: 0,
-    y: 20,
-    duration: 0.05,
-    stagger: 0.03,
-    ease: 'power2.out',
-  }));
-});
-*/
+  // Demo phone parallax sutil
+  const demoPhoneParallax = document.querySelector('.demo-phone');
+  if (demoPhoneParallax) {
+    gsap.to(demoPhoneParallax, {
+      y: -30,
+      scrollTrigger: {
+        trigger: '.demo-section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      },
+    });
+  }
+}
 
 // ==========================================
 // LAZY LOADING DE IFRAME
@@ -487,7 +477,7 @@ if (contactForm) {
         firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     } else {
-      // Tracking de conversión en Google Analytics
+      // Tracking de conversión
       if (typeof gtag !== 'undefined') {
         gtag('event', 'generate_lead', {
           event_category: 'engagement',
@@ -497,7 +487,6 @@ if (contactForm) {
     }
   });
 
-  // Remover error al escribir
   contactForm.querySelectorAll('input, select, textarea').forEach((field) => {
     field.addEventListener('input', () => {
       field.classList.remove('error');
@@ -571,11 +560,41 @@ window.addEventListener('scroll', () => {
 // PERFORMANCE
 // ==========================================
 
-// Reducir animaciones en dispositivos de bajo rendimiento
 if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
   document.documentElement.style.setProperty('--transition-fast', '0.1s');
   document.documentElement.style.setProperty('--transition-smooth', '0.15s');
 }
+
+// ==========================================
+// REFRESH SCROLLTRIGGER ON RESIZE
+// ==========================================
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 250);
+});
+
+// ==========================================
+// ASEGURAR QUE TODO ES VISIBLE AL FINAL
+// ==========================================
+
+// Después de 3 segundos, asegurar que todo es visible
+setTimeout(() => {
+  const allAnimatedElements = document.querySelectorAll(
+    '.gsap-fade-up, .gsap-fade-up-delay-1, .gsap-fade-up-delay-2, .gsap-fade-up-delay-3, .gsap-fade-up-delay-4, .gsap-fade-in, .gsap-scale-in, .gsap-card, .gsap-slide-right, .gsap-phone, .gsap-timeline-item, .step-card, .usecase-card, .benefit-item, .demo-feature-card, .process-step, .section-header'
+  );
+
+  allAnimatedElements.forEach((el) => {
+    gsap.set(el, {
+      opacity: 1,
+      visibility: 'visible',
+      clearProps: 'transform',
+    });
+  });
+}, 3000);
 
 // ==========================================
 // CONSOLE MESSAGE
@@ -592,13 +611,10 @@ console.log(
 );
 
 // ==========================================
-// REFRESH SCROLLTRIGGER ON RESIZE
+// DEBUG INFO (COMENTAR EN PRODUCCIÓN)
 // ==========================================
 
-let resizeTimer;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 250);
-});
+console.log('%cGSAP Status:', 'color: #00e5ff; font-weight: bold');
+console.log('GSAP loaded:', typeof gsap !== 'undefined');
+console.log('ScrollTrigger loaded:', typeof ScrollTrigger !== 'undefined');
+console.log('Total ScrollTriggers:', ScrollTrigger.getAll().length);
