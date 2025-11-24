@@ -1513,3 +1513,254 @@ footer {
   visibility: visible !important;
   transform: none !important;
 }
+/* ==========================================================================
+   Contacto Mejorado - Estilos Adicionales
+   ========================================================================== */
+
+/* Info Card con WhatsApp */
+.contact-info-card {
+  padding: 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(8, 4, 28, 0.95) 80%);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  margin-bottom: 24px;
+}
+
+.contact-info-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.contact-info-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+}
+
+.btn-whatsapp svg {
+  flex-shrink: 0;
+}
+
+/* Contact Benefits */
+.contact-benefits {
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(15, 7, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-benefits strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--primary-soft);
+  font-size: 15px;
+}
+
+.contact-benefits ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.contact-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+/* Form Intro */
+.form-intro {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Field Row para campos lado a lado */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Form Footer */
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--accent);
+  margin: 0;
+}
+
+.form-note svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* Select mejorado */
+.field-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c7b7e1' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  appearance: none;
+}
+
+/* Date input mejorado */
+.field-group input[type="date"] {
+  cursor: pointer;
+}
+
+.field-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.7);
+}
+
+/* Estados de validación */
+.field-group input:valid,
+.field-group textarea:valid,
+.field-group select:valid {
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.field-group input.error,
+.field-group textarea.error,
+.field-group select.error {
+  border-color: #ff4444;
+  background: rgba(255, 68, 68, 0.05);
+}
+
+.field-group input.error:focus,
+.field-group textarea.error:focus,
+.field-group select.error:focus {
+  border-color: #ff4444;
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+/* Loading state en botón */
+.btn-submit.loading {
+  pointer-events: none;
+  opacity: 0.7;
+  position: relative;
+}
+
+.btn-submit.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success message */
+.form-success {
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #25D366;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.form-success.show {
+  display: block;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+
+  .contact-info-card {
+    padding: 20px;
+  }
+
+  .btn-whatsapp {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-info-card h3 {
+    font-size: 16px;
+  }
+
+  .contact-benefits {
+    padding: 16px;
+  }
+}
