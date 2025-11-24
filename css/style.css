@@ -338,7 +338,7 @@ header.scrolled {
   content: "";
   position: absolute;
   inset: -10%;
-  background-image: url("../img/hero-magiccam.jpg");
+  background-image: url("../img/hero-magiccam.png");
   background-size: cover;
   background-position: center;
   opacity: 0.35;
@@ -516,7 +516,7 @@ header.scrolled {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/demo-preview.jpg");
+  background-image: url("../img/demo-preview.png");
   background-size: cover;
   background-position: center;
   opacity: 0.75;
